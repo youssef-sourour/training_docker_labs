@@ -3,12 +3,18 @@ services:
   web:
     image: php:7.2-apache
     ports:
-      - "80:8080"
+      - "80:80"
     environment:
-      - USERNAME=@usr
-      - PASSWORD=@passwd
+      - USERNAME=toto
+      - PASSWORD=python
     volumes:
       - ./website:/var/www/html/
+    networks:
+      - shared-network
+  api:
+    image: api:v1.0.0
+    ports:
+      - "8080:5000"
     networks:
       - shared-network
 networks:
